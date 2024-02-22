@@ -5,6 +5,10 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-image: url('https://conhintercalada.com/wp-content/uploads/2021/04/FONDO-COLOR-MINT-70-H-INTERCALADA-WEB.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
+    background-repeat: no-repeat; /* No repetir la imagen */
+
 }
 
 input[type="text"],
