@@ -1,43 +1,21 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet & Me</title>
-    <style>
-        
-
-        body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-image: url('https://img.freepik.com/foto-gratis/fondo-abstracto-textura_1258-30607.jpg?t=st=1708579646~exp=1708580246~hmac=7fc94be78adf46c05df48046fc0dc3a4b44af47e21d34c4eeb6f00e75c204721');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.container {
-    text-align: center;
-}
-
-h1 {
-    font-size: 4em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-
-
-    </style>
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Pet & Me</h1>
+    <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <form action="/login" method="post">
+            <label for="username">Nombre de usuario:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
     </div>
 </body>
 </html>
