@@ -1,5 +1,5 @@
 username = input('Escribe tu username =>')
-valid_users = ['jose123','andrea456','maria789']
+valid_users = ['AlondraVG','andrea456','maria789']
 
 if username in valid_users:
   print('usuario valido, puedes continuar')
