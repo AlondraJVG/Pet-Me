@@ -1,13 +1,12 @@
-
 from flask import Flask, render_template
 
-from config import config 
 app=Flask(__name__)
 
-@app.route("/")
-def index():
+@app.route('/')
+def login():
     return render_template("login.html")
 
 if __name__=='__name__':
-    app.config.from_object(config['development'])
+   
     app.run()
+
