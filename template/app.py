@@ -5,8 +5,8 @@ app = Flask(__name__)
 
 # Definimos la ruta para la página de inicio
 @app.route('/')
-def login():
-    return render_template('login.html')
+def index():
+    return render_template('index.html')
 
 # Definimos la ruta para la segunda página
 @app.route('/pagina2')
