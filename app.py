@@ -1,27 +1,20 @@
 from flask import Flask, render_template, request
 from flask_orator import Orator
 
-app = Flask(__name__)
-
-# Configuración de la base de datos
-app.config['DATABASES'] = {
-    'default': 'mysql',
-    'connections': {
-        'mysql': {
-            'driver': 'mysql',
-            'host': 'petClinical.mysql.pythonanywhere-services.com',
-            'database': 'petClinical',
-            'user': 'petClinical',
-            'password': 'Alondra.77',
-            'prefix': ''
-        }
+ORATOR_DATABASES = {
+    'development': {
+        'driver': 'mysql',
+        'host': 'petClinical.mysql.pythonanywhere-services.com',
+        'database': 'petClinical$default',
+        'user': 'petClinical',
+        'password': 'Alondra.77'
     }
 }
 
-db = Orator(app)
+app = Flask(__name__)
 
-class Usuarios(db.Model):
-    __table__ = 'usuarios'
+app.config['ORATOR_DATABASES'] = ORATOR_DATABASES
+db = Orator(app)
 
 @app.route('/')
 def index():
@@ -31,9 +24,9 @@ def index():
 def login():
     username = request.form['username']
     password = request.form['password']
-    user = Usuarios.where("user", username).where("password", password).first()
+    user = db.table("usuarios").where("user", username).where("password", password).get().first()
 
-    if user:
+    if user is not None:
         return render_template('Administrador.py')
     else:
         return 'Nombre de usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.'
