@@ -23,13 +23,13 @@ h1 {
 
 .pet-image {
     width: 100%; /* Para que la imagen sea proporcional */
-    max-width: 400px; /* Ajustar el ancho máximo de la imagen */
+    max-width: 100px; /* Ajustar el ancho máximo de la imagen */
     height: auto;
     margin-bottom: 20px;
 }
 
 .login-container {
-    max-width: 300px; /* Ajustar el ancho máximo del contenedor de inicio de sesión */
+    max-width: 150px; /* Ajustar el ancho máximo del contenedor de inicio de sesión */
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.8);
     padding: 10px;
