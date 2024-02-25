@@ -4,7 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet & Me</title>
-    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/foto-gratis/fondo-abstracto-textura_1258-30607.jpg?t=st=1708579646~exp=1708580246~hmac=7fc94be78adf46c05df48046fc0dc3a4b44af47e21d34c4eeb6f00e75c204721');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px; /* Limitar el ancho del contenedor para una mejor lectura */
+            width: 90%; /* Ajustar el ancho del contenedor en pantallas pequeñas */
+        }
+        h1 {
+            font-size: 3em;
+            color: rgb(0, 0, 0);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+        .pet-image {
+            width: 100%; /* Asegurar que la imagen sea responsiva */
+            max-width: 200px; /* Limitar el ancho de la imagen */
+            margin-bottom: 20px;
+            border-radius: 10px; /* Agregar bordes redondeados */
+        }
+        .login-container {
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
