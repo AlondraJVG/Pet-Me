@@ -27,7 +27,7 @@ def login():
     user = db.table("usuarios").where("user", username).where("password", password).get().first()
 
     if user is not None:
-        return render_template('Adminitrador.py')
+        return render_template('Administrador.py')
     else:
         return 'Nombre de usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.'
 
