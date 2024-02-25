@@ -22,8 +22,8 @@ h1 {
 }
 
 .pet-image {
-    width: 100%; /* Para que la imagen sea proporcional */
-    max-width: 100px; /* Ajustar el ancho máximo de la imagen */
+    max-width: 50px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
+    width: auto;
     height: auto;
     margin-bottom: 20px;
 }
