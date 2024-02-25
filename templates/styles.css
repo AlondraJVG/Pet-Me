@@ -53,14 +53,18 @@
         }
         button {
             width: 100%;
-            padding: 10px;
+            padding: 12px 20px; /* Aumentar el padding para que el botón sea más grande */
             background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 25px; /* Agregar un borde redondeado más pronunciado */
             cursor: pointer;
             transition: background-color 0.3s ease;
+            font-size: 1em; /* Tamaño de fuente */
+            font-weight: bold; /* Negrita */
+            text-transform: uppercase; /* Convertir el texto en mayúsculas */
         }
+        
         button:hover {
             background-color: #45a049;
         }
