@@ -13,7 +13,10 @@ body {
 }
 
 .pet-image {
-    width: 100px;
+    width: 15em;
+    width: 15rem;
+    margin-bottom: 20px;
+
 }
 
 .container {
