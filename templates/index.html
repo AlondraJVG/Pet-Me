@@ -59,18 +59,26 @@
             margin-bottom: 10px;
         }
         button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Agregar transición para el cambio de color y transformación */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar sombra */
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px); /* Agregar una ligera elevación al pasar el cursor */
+}
+
+button:active {
+    transform: translateY(2px); /* Agregar una ligera bajada al hacer clic */
+}
+
     </style>
 </head>
 <body>
