@@ -2,12 +2,14 @@
 body {
     margin: 0;
     padding: 0;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    background-color: #82eb62;
-    font-family: Poppins-Regular, sans-serif;
+    font-family: Arial, sans-serif;
+    background-image: url('https://img.freepik.com/foto-gratis/fondo-abstracto-textura_1258-30607.jpg?t=st=1708579646~exp=1708580246~hmac=7fc94be78adf46c05df48046fc0dc3a4b44af47e21d34c4eeb6f00e75c204721');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
