@@ -1,3 +1,4 @@
+
 body {
     margin: 0;
     padding: 0;
@@ -22,14 +23,13 @@ h1 {
 }
 
 .pet-image {
-    max-width: 50px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
-    width: auto;
+    max-width: 50%; 
     height: auto;
     margin-bottom: 20px;
 }
 
 .login-container {
-    max-width: 150px; /* Ajustar el ancho máximo del contenedor de inicio de sesión */
+    max-width: 100%; 
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.8);
     padding: 10px;
@@ -61,4 +61,15 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+
+@media screen and (max-width: 600px) {
+    .pet-image {
+        max-width: 80%; 
+    }
+
+    .login-container {
+        max-width: 90%; 
+    }
 }
