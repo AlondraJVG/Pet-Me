@@ -24,7 +24,7 @@ def index():
 def login():
     username = request.form['username']
     password = request.form['password']
-    user = db.table("users").where("user", username).where("password", password).get().first()
+    user = db.table("usuarios").where("user", username).where("password", password).get().first()
 
     if user is not None:
         return render_template('Adminitrador.py')
