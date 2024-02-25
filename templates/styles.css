@@ -1,8 +1,15 @@
 body {
-    margin: 15;
-    padding: 15;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
     font-family: Arial, sans-serif;
-    background: #fff;
+    background: #82eb62;
 }
 
 .container {
