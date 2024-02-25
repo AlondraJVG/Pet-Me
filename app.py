@@ -19,7 +19,7 @@ db = Orator(app)
 @app.route('/')
 def index():
     return render_template('index.html')
-@app.route('/administrador')
+@app.route('/')
 def administrador():
     return render_template('administrador.py')
 
@@ -31,7 +31,7 @@ def login():
 
     if user is not None:
         # Redirigir al usuario a la ruta '/administrador' si las credenciales son correctas
-        return redirect(url_for('administrador'))
+        return render_template('administrador')
     else:
         return 'Nombre de usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.'
 
