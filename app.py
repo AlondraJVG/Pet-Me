@@ -27,9 +27,15 @@ def login():
     user = db.table("usuarios").where("user", username).where("password", password).get().first()
 
     if user is not None:
-        return render_template('Administrador.py')
+        return render_template(url_for('Administrador'))
     else:
         return 'Nombre de usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.'
+    
+@app.route('/administrador')
+def administrador():
+    # Esta función renderiza la página 'Administrador.py'
+    return render_template('Administrador.py')
 
 if __name__ == '__main__':
     app.run(debug=True)
+
