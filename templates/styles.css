@@ -1,19 +1,25 @@
 body {
     margin: 0;
-    padding: 0;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     color: #212529;
-    background-color: #82eb62;
-    font-family: Poppins-Regular, sans-serif;
+    background-color: #fff;
+    font-family: Poppins-Regular,sans-serif;
+    background: #82eb62;
+    padding: 0;
+    box-sizing: border-box;
+    box-sizing: inherit;
+}
+
+.pet-image {
+    width: 100px;
 }
 
 .container {
     text-align: center;
     padding: 20px;
 }
-
 h1 {
     font-size: 3em;
     color: rgb(138, 250, 172);
@@ -21,26 +27,19 @@ h1 {
     margin-bottom: 20px;
 }
 
-.pet-image {
-    width: 100%; /* Para que la imagen sea proporcional */
-    max-width: 400px; /* Ajustar el ancho máximo de la imagen */
-    height: auto;
-    margin-bottom: 20px;
-}
-
 .login-container {
-    max-width: 300px; /* Ajustar el ancho máximo del contenedor de inicio de sesión */
+    max-width: 300px;
+    max-width: 150px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
 h2 {
     margin-bottom: 20px;
 }
-
 input {
     width: 100%;
     padding: 10px;
@@ -48,17 +47,15 @@ input {
     border: none;
     border-radius: 4px;
 }
-
 button {
-    width: 100%;
+    
     padding: 14px 28px;
     background-color: #007bff;
-    color: #fff;
+    color: #3dc0e0;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
-
 button:hover {
     background-color: #0056b3;
 }
