@@ -1,4 +1,4 @@
-class Administrador:
+class administrador:
     def __init__(self, id_admin, nombre, apellido_paterno, apellido_materno, numero, correo):
         self.id_admin = id_admin
         self.nombre = nombre
@@ -17,7 +17,7 @@ class Administrador:
         self.correo = nuevo_correo
 
 # Ejemplo de uso
-admin = Administrador(1, "Juan", "Pérez", "González", "1234567890", "juan@example.com")
+admin = administrador(1, "Juan", "Pérez", "González", "1234567890", "juan@example.com")
 print(admin)
 
 # Cambiar número de teléfono
