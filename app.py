@@ -35,7 +35,7 @@ def login():
 @app.route('/administrador')
 def administrador():
     # Esta función renderiza la página 'Administrador.py'
-    return render_template('Administrador.py')
+    return render_template('administrador.py')
 
 if __name__ == '__main__':
     app.run(debug=True)
