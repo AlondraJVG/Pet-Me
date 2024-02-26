@@ -23,8 +23,8 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            max-width: 400px; /* Limitar el ancho del contenedor para una mejor lectura */
-            width: 90%; /* Ajustar el ancho del contenedor en pantallas pequeñas */
+            max-width: 400px; 
+            width: 90%; 
         }
         h1 {
             font-size: 3em;
@@ -33,10 +33,10 @@
             margin-bottom: 20px;
         }
         .pet-image {
-            width: 100%; /* Asegurar que la imagen sea responsiva */
-            max-width: 200px; /* Limitar el ancho de la imagen */
+            width: 100%; 
+            max-width: 200px; 
             margin-bottom: 20px;
-            border-radius: 10px; /* Agregar bordes redondeados */
+            border-radius: 10px; 
         }
         .login-container {
             margin-bottom: 20px;
@@ -66,17 +66,17 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Agregar transición para el cambio de color y transformación */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar sombra */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 button:hover {
     background-color: #45a049;
-    transform: translateY(-2px); /* Agregar una ligera elevación al pasar el cursor */
+    transform: translateY(-2px); 
 }
 
 button:active {
-    transform: translateY(2px); /* Agregar una ligera bajada al hacer clic */
+    transform: translateY(2px); 
 }
 
     </style>
@@ -84,7 +84,7 @@ button:active {
 <body>
     <div class="container">
         <h1>Pet & Me</h1>
-        <img src="https://lh3.googleusercontent.com/0REfP-HPUfl9r-0nq3ex61aebg7Y371jjUCeU7OJnZunY1smGJskzU9txVFULMYBfjvvTiqT1N69D1caZnbjXvE=w1280" alt="Imagen de Pet & Me" class="pet-image">
+        <img src="{{ url_for('static', filename='images/1.png') }}" alt="Imagen de Pet & Me" class="pet-image">
         <div class="login-container">
             <h2>Iniciar Sesión</h2>
             <form action="/login" method="post">

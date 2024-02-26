@@ -16,8 +16,8 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            max-width: 400px; /* Limitar el ancho del contenedor para una mejor lectura */
-            width: 90%; /* Ajustar el ancho del contenedor en pantallas pequeñas */
+            max-width: 400px; 
+            width: 90%; 
         }
         h1 {
             font-size: 3em;
@@ -26,10 +26,10 @@
             margin-bottom: 20px;
         }
         .pet-image {
-            width: 100%; /* Asegurar que la imagen sea responsiva */
-            max-width: 200px; /* Limitar el ancho de la imagen */
+            width: 100%; 
+            max-width: 200px; 
             margin-bottom: 20px;
-            border-radius: 10px; /* Agregar bordes redondeados */
+            border-radius: 10px;
         }
         .login-container {
             margin-bottom: 20px;

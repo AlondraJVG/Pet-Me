@@ -16,6 +16,10 @@ app = Flask(__name__)
 app.config['ORATOR_DATABASES'] = ORATOR_DATABASES
 db = Orator(app)
 
+
+
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -28,7 +32,7 @@ def login():
     user = db.table("usuarios").where("user", username).where("password", password).first()
 
     if user is not None:
-        return 'Haz iniciado seccion.'
+        return 'Has iniciado seccion.'
     else:
         return 'Nombre de usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.'
 
