@@ -27,12 +27,12 @@ def login():
     user = db.table("usuarios").where("user", username).where("password", password).first()
 
     if user is not None:
-        return redirect(url_for('admin'))
+        return redirect(url_for('administrador'))
     else:
         return 'Nombre de usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.'
 
-@app.route('/admin')
-def admin():
+@app.route('/administrador')
+def administrador():
     return '¡Bienvenido al panel de administración!'
 
 if __name__ == '__main__':
