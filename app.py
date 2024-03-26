@@ -33,7 +33,7 @@ def login():
 
 @app.route('/administrador')
 def administrador():
-    return '¡Bienvenido al panel de administración!'
+    return render_template('administrador.py')
 
 if __name__ == '__main__':
     app.run(debug=True)
