@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_orator import Orator
 
 ORATOR_DATABASES = {
@@ -16,14 +16,9 @@ app = Flask(__name__)
 app.config['ORATOR_DATABASES'] = ORATOR_DATABASES
 db = Orator(app)
 
-
-
-
-
 @app.route('/')
 def index():
     return render_template('index.html')
-
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -32,11 +27,13 @@ def login():
     user = db.table("usuarios").where("user", username).where("password", password).first()
 
     if user is not None:
-        return 'Has iniciado seccion.'
+        return redirect(url_for('admin'))
     else:
         return 'Nombre de usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.'
 
+@app.route('/admin')
+def admin():
+    return '¡Bienvenido al panel de administración!'
+
 if __name__ == '__main__':
     app.run(debug=True)
-
-
