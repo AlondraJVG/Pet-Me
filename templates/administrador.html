@@ -28,29 +28,13 @@
         th {
             background-color: #f2f2f2;
         }
-        .btn {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .btn-danger {
-            background-color: #f44336;
-        }
-        .btn-warning {
-            background-color: #ff9800;
-        }
         @media screen and (max-width: 600px) {
             table {
                 overflow-x: auto;
             }
+        }
+        form {
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -66,7 +50,6 @@
                     <th>Descripción</th>
                     <th>Precio</th>
                     <th>Stock</th>
-                    <th>Acciones</th> <!-- Nuevo encabezado para las acciones -->
                 </tr>
             </thead>
             <tbody>
@@ -78,18 +61,24 @@
                     <td>{{ producto.descripcion }}</td>
                     <td>{{ producto.precio }}</td>
                     <td>{{ producto.cantidad_stock }}</td>
-                    <td>
-                        <!-- Botón para editar -->
-                        <button class="btn">Editar</button>
-                        <!-- Botón para eliminar -->
-                        <button class="btn btn-danger">Eliminar</button>
-                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
-    <!-- Botón para agregar nuevo producto -->
-    <button class="btn btn-warning" style="margin-left: 20px;">Agregar Producto</button>
+    <h2>Agregar Nuevo Producto</h2>
+    <form action="/agregar_producto" method="POST">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br>
+        <label for="tipo">Tipo:</label><br>
+        <input type="text" id="tipo" name="tipo" required><br>
+        <label for="descripcion">Descripción:</label><br>
+        <textarea id="descripcion" name="descripcion" required></textarea><br>
+        <label for="precio">Precio:</label><br>
+        <input type="number" id="precio" name="precio" step="0.01" required><br>
+        <label for="cantidad_stock">Cantidad en Stock:</label><br>
+        <input type="number" id="cantidad_stock" name="cantidad_stock" required><br><br>
+        <input type="submit" value="Agregar Producto">
+    </form>
 </body>
 </html>

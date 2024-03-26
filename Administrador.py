@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for, request
 from sqlalchemy import create_engine, Column, Integer, String, Text, DECIMAL, TIMESTAMP, Enum, ForeignKey
 from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy.ext.declarative import declarative_base
@@ -54,6 +54,25 @@ def administrador():
     # Obtener la lista de productos
     productos = session.query(Producto).all()
     return render_template('inventario.html', productos=productos)
+
+@app.route('/agregar_producto', methods=['POST'])
+def agregar_producto():
+    # Obtener los datos del formulario
+    nombre = request.form['nombre']
+    tipo = request.form['tipo']
+    descripcion = request.form['descripcion']
+    precio = request.form['precio']
+    cantidad_stock = request.form['cantidad_stock']
+
+    # Crear un nuevo objeto Producto
+    nuevo_producto = Producto(nombre=nombre, tipo=tipo, descripcion=descripcion, precio=precio, cantidad_stock=cantidad_stock)
+
+    # Agregar el nuevo producto a la base de datos
+    session.add(nuevo_producto)
+    session.commit()
+
+    # Redireccionar a la página de administrador para mostrar la lista actualizada de productos
+    return redirect(url_for('administrador'))
 
 if __name__ == "__main__":
     app.run(debug=True)
