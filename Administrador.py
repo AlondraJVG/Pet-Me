@@ -34,6 +34,7 @@ def administrador():
     productos = session.query(Producto).all()
     return render_template('inventario.html', productos=productos)
 
+
 @app.route('/agregar_producto', methods=['POST'])
 def agregar_producto():
     # Obtener los datos del formulario
