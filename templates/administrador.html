@@ -28,6 +28,25 @@
         th {
             background-color: #f2f2f2;
         }
+        .btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn-danger {
+            background-color: #f44336;
+        }
+        .btn-warning {
+            background-color: #ff9800;
+        }
         @media screen and (max-width: 600px) {
             table {
                 overflow-x: auto;
@@ -47,6 +66,7 @@
                     <th>Descripción</th>
                     <th>Precio</th>
                     <th>Stock</th>
+                    <th>Acciones</th> <!-- Nuevo encabezado para las acciones -->
                 </tr>
             </thead>
             <tbody>
@@ -58,10 +78,18 @@
                     <td>{{ producto.descripcion }}</td>
                     <td>{{ producto.precio }}</td>
                     <td>{{ producto.cantidad_stock }}</td>
+                    <td>
+                        <!-- Botón para editar -->
+                        <button class="btn">Editar</button>
+                        <!-- Botón para eliminar -->
+                        <button class="btn btn-danger">Eliminar</button>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+    <!-- Botón para agregar nuevo producto -->
+    <button class="btn btn-warning" style="margin-left: 20px;">Agregar Producto</button>
 </body>
 </html>
