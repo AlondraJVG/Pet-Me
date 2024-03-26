@@ -1,25 +1,28 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database import Producto, Base
+from flask import Flask, render_template
 
-def main():
+app = Flask(__name__)
+
+@app.route('/administrador')
+def administrador():
+    # Obtener la lista de productos
+    productos = obtener_lista_de_productos()  
+    return render_template('inventario.html', productos=productos)
+
+def obtener_lista_de_productos():
     engine = create_engine('sqlite:///veterinaria_inventario.db', echo=True)
     Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Agregar un nuevo producto
-    nuevo_producto = Producto(nombre="Alimento para gatos", tipo="Alimento", descripcion="Alimento balanceado para gatos adultos", precio=15.99, cantidad_stock=100)
-    session.add(nuevo_producto)
-    session.commit()
-
     # Consultar todos los productos
     productos = session.query(Producto).all()
-    for producto in productos:
-        print(f"ID: {producto.id}, Nombre: {producto.nombre}, Tipo: {producto.tipo}, Precio: {producto.precio}, Stock: {producto.cantidad_stock}")
-
     session.close()
+    
+    return productos
 
 if __name__ == "__main__":
-    main()
+    app.run(debug=True)
