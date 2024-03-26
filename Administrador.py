@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request
-from sqlalchemy import create_engine, Column, Integer, String, Text, DECIMAL, TIMESTAMP, Enum, ForeignKey
-from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy import create_engine, Column, Integer, String, Text, DECIMAL
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 app = Flask(__name__)
@@ -14,7 +14,7 @@ engine = create_engine(DATABASE_URL, echo=True)
 # Crear una instancia base para declarar las clases de las tablas
 Base = declarative_base()
 
-# Definir las clases para mapear a las tablas en la base de datos
+# Definir la clase Producto para mapear a la tabla Productos en la base de datos
 class Producto(Base):
     __tablename__ = 'Productos'
     id = Column(Integer, primary_key=True)
@@ -23,27 +23,6 @@ class Producto(Base):
     descripcion = Column(Text)
     precio = Column(DECIMAL(10, 2))
     cantidad_stock = Column(Integer)
-
-class Proveedor(Base):
-    __tablename__ = 'Proveedores'
-    id = Column(Integer, primary_key=True)
-    nombre = Column(String(100))
-    direccion = Column(String(255))
-    telefono = Column(String(20))
-
-class TransaccionInventario(Base):
-    __tablename__ = 'Transacciones_Inventario'
-    id = Column(Integer, primary_key=True)
-    producto_id = Column(Integer, ForeignKey('Productos.id'))
-    tipo_transaccion = Column(Enum('Entrada', 'Salida'))
-    cantidad = Column(Integer)
-    fecha = Column(TIMESTAMP)
-    proveedor_id = Column(Integer, ForeignKey('Proveedores.id'))
-
-    producto = relationship("Producto", back_populates="transacciones")
-    proveedor = relationship("Proveedor")
-
-Producto.transacciones = relationship("TransaccionInventario", back_populates="producto")
 
 # Crear una sesión para interactuar con la base de datos
 Session = sessionmaker(bind=engine)
@@ -64,10 +43,8 @@ def agregar_producto():
     precio = request.form['precio']
     cantidad_stock = request.form['cantidad_stock']
 
-    # Crear un nuevo objeto Producto
+    # Crear un nuevo objeto Producto y agregarlo a la sesión
     nuevo_producto = Producto(nombre=nombre, tipo=tipo, descripcion=descripcion, precio=precio, cantidad_stock=cantidad_stock)
-
-    # Agregar el nuevo producto a la base de datos
     session.add(nuevo_producto)
     session.commit()
 
