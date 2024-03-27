@@ -39,9 +39,9 @@ def agregar_producto():
     return jsonify(productos=productos_json)
 
 @app.route('/')
-def index():
+def administrador():
     productos = Producto.all()
-    return render_template('index.html', productos=productos)
+    return render_template('administrador.html', productos=productos)
 
 if __name__ == '__main__':
     app.run(debug=True)
