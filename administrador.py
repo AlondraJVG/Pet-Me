@@ -31,7 +31,6 @@ def agregar_producto():
 
     nuevo_producto = Producto.create(nombre=nombre, tipo=tipo, descripcion=descripcion, precio=precio, cantidad_stock=cantidad_stock)
 
-    # Obtener la lista actualizada de productos y devolverla como JSON
     productos = Producto.all()
     productos_json = [{'id': producto.id, 'nombre': producto.nombre, 'tipo': producto.tipo,
                        'descripcion': producto.descripcion, 'precio': producto.precio,
