@@ -1,18 +1,17 @@
-from flask import Flask, request, jsonify
-from orator import DatabaseManager, Model
+from flask import Flask, render_template, request, redirect, url_for
+from flask_orator import Orator
 
-app = Flask(__name__)
 
-config = {
-    'mysql': {
+ORATOR_DATABASES = {
+    'development': {
         'driver': 'mysql',
         'host': 'petClinical.mysql.pythonanywhere-services.com',
         'database': 'petClinical$default',
         'user': 'petClinical',
-        'password': 'Alondra.77',
-        'prefix': ''
+        'password': 'Alondra.77'
     }
 }
+app = Flask(__name__)
 
 db = DatabaseManager(config)
 Model.set_connection_resolver(db)
