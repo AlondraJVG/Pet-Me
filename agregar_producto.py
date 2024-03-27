@@ -1,18 +1,26 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy  # Aquí asumiendo que estás usando SQLAlchemy para interactuar con la base de datos
+from orator import DatabaseManager, Model
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///veterinaria_inventario.db'
-db = SQLAlchemy(app)
+
+config = {
+    'mysql': {
+        'driver': 'mysql',
+        'host': 'petClinical.mysql.pythonanywhere-services.com',
+        'database': 'petClinical$default',
+        'user': 'petClinical',
+        'password': 'Alondra.77',
+        'prefix': ''
+    }
+}
+
+db = DatabaseManager(config)
+Model.set_connection_resolver(db)
 
 # Definir el modelo de Producto
-class Producto(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    nombre = db.Column(db.String(100))
-    tipo = db.Column(db.String(50))
-    descripcion = db.Column(db.Text)
-    precio = db.Column(db.DECIMAL(10, 2))
-    cantidad_stock = db.Column(db.Integer)
+class Producto(Model):
+    __table__ = 'Productos'
+    __timestamps__ = False  # Si no hay campos de timestamp en la tabla
 
 # Ruta para agregar un nuevo producto
 @app.route('/agregar_producto', methods=['POST'])
@@ -23,10 +31,8 @@ def agregar_producto():
     precio = request.form['precio']
     cantidad_stock = request.form['cantidad_stock']
 
-    # Crear una nueva instancia de Producto y agregarla a la base de datos
-    nuevo_producto = Producto(nombre=nombre, tipo=tipo, descripcion=descripcion, precio=precio, cantidad_stock=cantidad_stock)
-    db.session.add(nuevo_producto)
-    db.session.commit()
+    # Crear una nueva instancia de Producto y guardarla en la base de datos
+    nuevo_producto = Producto.create(nombre=nombre, tipo=tipo, descripcion=descripcion, precio=precio, cantidad_stock=cantidad_stock)
 
     # Redirigir a la página de administrador o a donde desees
     return redirect(url_for('administrador'))
