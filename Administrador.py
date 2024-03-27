@@ -35,22 +35,7 @@ def administrador():
     return render_template('inventario.html', productos=productos)
 
 
-@app.route('/agregar_producto', methods=['POST'])
-def agregar_producto():
-    # Obtener los datos del formulario
-    nombre = request.form['nombre']
-    tipo = request.form['tipo']
-    descripcion = request.form['descripcion']
-    precio = request.form['precio']
-    cantidad_stock = request.form['cantidad_stock']
 
-    # Crear un nuevo objeto Producto y agregarlo a la sesión
-    nuevo_producto = Producto(nombre=nombre, tipo=tipo, descripcion=descripcion, precio=precio, cantidad_stock=cantidad_stock)
-    session.add(nuevo_producto)
-    session.commit()
-
-    # Redireccionar a la página de administrador para mostrar la lista actualizada de productos
-    return redirect(url_for('administrador'))
 
 if __name__ == "__main__":
     app.run(debug=True)
