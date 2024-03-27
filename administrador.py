@@ -1,10 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify
 from orator import Model, DatabaseManager
 
 app = Flask(__name__)
 
 ORATOR_DATABASES = {
-    'development': {
+    'mysql': {
         'driver': 'mysql',
         'host': 'petClinical.mysql.pythonanywhere-services.com',
         'database': 'petClinical$default',
@@ -13,9 +13,7 @@ ORATOR_DATABASES = {
     }
 }
 
-app.config['ORATOR_DATABASES'] = ORATOR_DATABASES
 db = DatabaseManager(ORATOR_DATABASES)
-
 Model.set_connection_resolver(db)
 
 class Producto(Model):
@@ -24,6 +22,7 @@ class Producto(Model):
 
 @app.route('/agregar_producto', methods=['POST'])
 def agregar_producto():
+
     nombre = request.form['nombre']
     tipo = request.form['tipo']
     descripcion = request.form['descripcion']
@@ -38,6 +37,11 @@ def agregar_producto():
                        'cantidad_stock': producto.cantidad_stock} for producto in productos]
 
     return jsonify(productos=productos_json)
+
+@app.route('/')
+def index():
+    productos = Producto.all()
+    return render_template('index.html', productos=productos)
 
 if __name__ == '__main__':
     app.run(debug=True)
