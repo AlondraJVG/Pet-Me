@@ -1,7 +1,5 @@
-from flask import Flask, request, jsonify
-from orator import Model, DatabaseManager
-
-app = Flask(__name__)
+from flask import Flask, render_template, request, redirect, url_for
+from flask_orator import Orator
 
 ORATOR_DATABASES = {
     'development': {
@@ -13,31 +11,29 @@ ORATOR_DATABASES = {
     }
 }
 
+app = Flask(__name__)
+
 app.config['ORATOR_DATABASES'] = ORATOR_DATABASES
-db = DatabaseManager(ORATOR_DATABASES)
+db = Orator(app)
 
-Model.set_connection_resolver(db)
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-class Producto(Model):
-    __table__ = 'Productos'
-    __timestamps__ = False
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
+    user = db.table("usuarios").where("user", username).where("password", password).first()
 
-@app.route('/agregar_producto', methods=['POST'])
-def agregar_producto():
-    nombre = request.form['nombre']
-    tipo = request.form['tipo']
-    descripcion = request.form['descripcion']
-    precio = request.form['precio']
-    cantidad_stock = request.form['cantidad_stock']
+    if user is not None:
+        return redirect(url_for('administrador'))
+    else:
+        return 'Nombre de usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.'
 
-    nuevo_producto = Producto.create(nombre=nombre, tipo=tipo, descripcion=descripcion, precio=precio, cantidad_stock=cantidad_stock)
-
-    productos = Producto.all()
-    productos_json = [{'id': producto.id, 'nombre': producto.nombre, 'tipo': producto.tipo,
-                       'descripcion': producto.descripcion, 'precio': producto.precio,
-                       'cantidad_stock': producto.cantidad_stock} for producto in productos]
-
-    return jsonify(productos=productos_json)
+@app.route('/administrador')
+def administrador():
+    return render_template('administrador.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

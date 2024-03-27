@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
-from flask_orator import Orator
+from flask import Flask, request, jsonify
+from orator import Model, DatabaseManager
 
+app = Flask(__name__)
 
 ORATOR_DATABASES = {
     'development': {
@@ -11,11 +12,11 @@ ORATOR_DATABASES = {
         'password': 'Alondra.77'
     }
 }
-app = Flask(__name__)
 
 app.config['ORATOR_DATABASES'] = ORATOR_DATABASES
-db = Orator(app)
+db = DatabaseManager(ORATOR_DATABASES)
 
+Model.set_connection_resolver(db)
 
 class Producto(Model):
     __table__ = 'Productos'
