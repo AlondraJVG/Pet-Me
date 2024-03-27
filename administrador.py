@@ -13,8 +13,9 @@ ORATOR_DATABASES = {
 }
 app = Flask(__name__)
 
-db = DatabaseManager(config)
-Model.set_connection_resolver(db)
+app.config['ORATOR_DATABASES'] = ORATOR_DATABASES
+db = Orator(app)
+
 
 class Producto(Model):
     __table__ = 'Productos'
