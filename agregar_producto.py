@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, request, jsonify
 from orator import DatabaseManager, Model
 
 app = Flask(__name__)
@@ -31,7 +31,12 @@ def agregar_producto():
 
     nuevo_producto = Producto.create(nombre=nombre, tipo=tipo, descripcion=descripcion, precio=precio, cantidad_stock=cantidad_stock)
 
-    return redirect(url_for('administrador'))
+    productos = Producto.all()
+    productos_json = [{'id': producto.id, 'nombre': producto.nombre, 'tipo': producto.tipo,
+                       'descripcion': producto.descripcion, 'precio': producto.precio,
+                       'cantidad_stock': producto.cantidad_stock} for producto in productos]
+
+    return jsonify(productos=productos_json)
 
 if __name__ == '__main__':
     app.run(debug=True)
