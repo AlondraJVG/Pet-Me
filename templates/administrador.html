@@ -102,4 +102,43 @@
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
             <label for="tipo">Tipo:</label>
-            <input type="text" id="tipo" name="tipo
+            <input type="text" id="tipo" name="tipo" required>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" step="0.01" required>
+            <label for="cantidad_stock">Cantidad en Stock:</label>
+            <input type="number" id="cantidad_stock" name="cantidad_stock" required>
+            <input type="submit" value="Agregar Producto">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('formulario-agregar').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            fetch('/agregar_producto', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                var tablaProductos = document.getElementById('tabla-productos').getElementsByTagName('tbody')[0];
+                var nuevoProductoHTML = '';
+                data.productos.forEach(function(producto) {
+                    nuevoProductoHTML += '<tr>' +
+                        '<td>' + producto.id + '</td>' +
+                        '<td>' + producto.nombre + '</td>' +
+                        '<td>' + producto.tipo + '</td>' +
+                        '<td>' + producto.descripcion + '</td>' +
+                        '<td>' + producto.precio + '</td>' +
+                        '<td>' + producto.cantidad_stock + '</td>' +
+                        '</tr>';
+                });
+                tablaProductos.innerHTML = nuevoProductoHTML;
+            })
+            .catch(error => console.error('Error al agregar el producto:', error));
+        });
+    </script>
+</body>
+</html>
