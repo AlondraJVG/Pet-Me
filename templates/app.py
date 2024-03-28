@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_orator import Orator
-from werkzeug.security import check_password_hash
 
 ORATOR_DATABASES = {
     'development': {
@@ -13,11 +12,9 @@ ORATOR_DATABASES = {
 }
 
 app = Flask(__name__)
+
 app.config['ORATOR_DATABASES'] = ORATOR_DATABASES
 db = Orator(app)
-
-class Usuario(db.Model):
-    __table__ = 'usuarios'
 
 @app.route('/')
 def index():
@@ -27,12 +24,12 @@ def index():
 def login():
     username = request.form['username']
     password = request.form['password']
-    user = Usuario.where("user", username).first()
+    user = db.table("usuarios").where("user", username).where("password", password).first()
 
-    if user and check_password_hash(user.password, password):
+    if user is not None:
         return redirect(url_for('administrador'))
     else:
-        return 'Nombre de usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.', 401
+        return 'Nombre de usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.'
 
 @app.route('/administrador')
 def administrador():
